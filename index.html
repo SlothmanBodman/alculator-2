@@ -88,6 +88,16 @@
           display: block;
         }
 
+        .container-full {
+          padding-bottom: 50%;
+        }
+
+       }
+
+       @media only screen and (max-height: 570px) {
+         .container-full {
+           height: auto;
+         }
        }
 /*Forms*/
 
@@ -168,6 +178,7 @@
       var infErr = 'Error: We don&#39;t know how you found an endless stream of alcohol, but you should make the most it!';
       var nanErr = 'Error: You seem to have missed some inputs, maybe it&#39;s time for a glass of water?';
       var zerErr = 'Error: That drink has no alcohol. Why are you even here?';
+      var bigErr = 'Error: Your drink has more ml of alcohol than the ml of the drink? Erm not sure how that works, but maybe check you put the correct numbers in.'
 
       //preform alculation (calculation)
       var oneper = drinkml/100;
@@ -193,6 +204,11 @@
       if (result <= 0) {
         document.getElementById('error').innerHTML = zerErr;
         console.log("0 Error Occured");
+      }
+      //larger Error | if result is larger than drink then show larger error variable
+      if (result > drinkml) {
+        document.getElementById('error').innerHTML = bigErr;
+        console.log("Larger Error Occured");
       }
     }
   </script>
